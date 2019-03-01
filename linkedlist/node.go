@@ -8,6 +8,15 @@ type Node struct {
 	next  *Node // Pointer to the next element.
 }
 
+func getListLength(head *Node) int {
+	length := 0
+	for head != nil {
+		length++
+		head = (*head).next
+	}
+	return length
+}
+
 func (n *Node) setData(value string) {
 	(*n).value = value
 }
@@ -36,7 +45,7 @@ func printLinkedList(n Node) {
 // This code block is heavily using pointers and is
 // going back and forth between pointers and values
 // so get ready to get a heavy dose of pointers.
-func (n *Node) insertNode(el string) {
+func (n *Node) insertNodeAtTheEnd(el string) {
 	if (*n).value == "" {
 		(*n).setData(el)
 		return
@@ -44,8 +53,8 @@ func (n *Node) insertNode(el string) {
 	if (*n).next == nil {
 		nextNode := Node{}
 		(*n).next = &nextNode
-		(nextNode).insertNode(el)
+		(nextNode).insertNodeAtTheEnd(el)
 	} else {
-		((*n).next).insertNode(el)
+		((*n).next).insertNodeAtTheEnd(el)
 	}
 }

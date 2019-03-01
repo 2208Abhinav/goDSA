@@ -13,7 +13,8 @@ func main() {
 		if nodeValue == "quit" {
 			break
 		}
-		head.insertNode(nodeValue)
+		head.insertNodeAtTheEnd(nodeValue)
 	}
 	printLinkedList(head)
+	fmt.Println(getListLength(&head))
 }
